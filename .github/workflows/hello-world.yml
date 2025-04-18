@@ -1,0 +1,17 @@
+# name - of the workflow
+name: hello-world
+# push - will be triggered on commit or tag pushed
+on: push
+jobs: 
+  # name of the job
+  hello-world-job: 
+    # runs on a Github-hosted Runner that was a VM, using the latest available version of Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # first step - checkout code from repo
+      - name: Check out the repository code
+        uses: actions/checkout@v4.2.2
+      # next step - run the script
+      - name: Run the script
+        run: echo "$(cat hello_world.txt)"
+      
