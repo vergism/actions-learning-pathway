@@ -1,0 +1,22 @@
+# build-test-deploy.yml workflow
+name: build-test-deploy
+on: push
+jobs: 
+  build-node-app-job:  # job-name
+    runs-on: ubuntu-latest
+    steps: 
+      # step 1
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+      # step 2 - 
+      - run: echo "$(cat hello_world.txt )"
+      # step 3 - Configure the build tool 
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with: 
+          node-version: '18.x'
+      # step 4 - install npm
+      - run: npm install
+      # step 5 - build the app
+      - run: npm run build
+      
